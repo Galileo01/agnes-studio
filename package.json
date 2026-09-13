@@ -1,0 +1,45 @@
+{
+  "name": "agnes-studio",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "WRANGLER_WRITE_LOGS=false vite",
+    "build": "tsc -b && WRANGLER_WRITE_LOGS=false vite build",
+    "preview": "WRANGLER_WRITE_LOGS=false vite preview",
+    "deploy": "pnpm build && WRANGLER_WRITE_LOGS=false wrangler deploy",
+    "typecheck": "tsc -b",
+    "test": "WRANGLER_WRITE_LOGS=false vitest run"
+  },
+  "dependencies": {
+    "@assistant-ui/react": "latest",
+    "@radix-ui/react-dialog": "latest",
+    "@radix-ui/react-dropdown-menu": "latest",
+    "@radix-ui/react-select": "latest",
+    "@radix-ui/react-slot": "latest",
+    "@radix-ui/react-tooltip": "latest",
+    "class-variance-authority": "latest",
+    "clsx": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-markdown": "latest",
+    "react-router-dom": "latest",
+    "remark-gfm": "latest",
+    "tailwind-merge": "latest"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "latest",
+    "@cloudflare/workers-types": "latest",
+    "@tailwindcss/vite": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "tailwindcss": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "vitest": "latest",
+    "wrangler": "latest"
+  }
+}

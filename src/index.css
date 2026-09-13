@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { color-scheme: light; }
+html.dark { color-scheme: dark; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, textarea, select { font: inherit; }
+::selection { background: rgb(221 214 254); color: rgb(76 29 149); }
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.animate-fade-in { animation: fade-in .18s ease-out; }
+.grid-pattern { background-image: radial-gradient(circle at 1px 1px, rgb(139 92 246 / .16) 1px, transparent 0); background-size: 24px 24px; }
+.prose-chat pre { overflow-x: auto; border-radius: 1rem; background: #17141d; padding: 1rem; color: #f5f3ff; }
+.prose-chat code:not(pre code) { border-radius: .35rem; background: rgb(245 243 255); padding: .12rem .35rem; color: rgb(109 40 217); }
+.dark .prose-chat code:not(pre code) { background: rgb(46 16 101 / .5); color: rgb(216 180 254); }
+.prose-chat p { margin: .55rem 0; line-height: 1.75; }
+.prose-chat ul, .prose-chat ol { margin: .55rem 0; padding-left: 1.35rem; }
+.prose-chat ul { list-style: disc; }
+.prose-chat ol { list-style: decimal; }
