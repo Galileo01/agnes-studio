@@ -80,6 +80,7 @@ const defaultDrafts: Drafts = { text: "", image: "", video: "" };
 const defaultModels: Models = { text: "agnes-3.0-flash", image: "agnes-image-2.5-flash", video: "agnes-video-v2.0" };
 const defaultImageParams: ImageParams = { size: "1K", ratio: "1:1", referenceUrl: "" };
 const defaultVideoParams: VideoParams = { size: "720P", ratio: "16:9", seconds: "5", firstFrame: "", lastFrame: "" };
+const PROJECT_REPO_URL = "https://github.com/Galileo01/agnes-studio";
 const actionButtonClassName = "h-8 gap-1.5 px-2.5 text-[13px] font-medium leading-none";
 const actionLabelClassName = "text-[13px] font-medium leading-none";
 const actionIconClassName = "size-3.5 shrink-0";
@@ -386,7 +387,7 @@ function ConversationWorkspace(props: {
           </button>
           <div className="flex items-center justify-between px-1">
             <DocsMenu />
-            <button className="rounded-lg p-2 text-neutral-300" title="项目 GitHub（待配置）" aria-label="项目 GitHub（待配置）" disabled><GitHubMark className="size-4" /></button>
+            <a href={PROJECT_REPO_URL} target="_blank" rel="noreferrer" className="rounded-lg p-2 text-neutral-500 hover:bg-black/[.04] hover:text-neutral-900 dark:hover:bg-white/[.06] dark:hover:text-white" title="项目 GitHub" aria-label="项目 GitHub"><GitHubMark className="size-4" /></a>
             <button onClick={() => props.setDark(!props.dark)} className="rounded-lg p-2 text-neutral-500 hover:bg-black/[.04] hover:text-neutral-900 dark:hover:bg-white/[.06] dark:hover:text-white" aria-label="切换主题">{props.dark ? <Sun className="size-4" /> : <Moon className="size-4" />}</button>
           </div>
         </div>
