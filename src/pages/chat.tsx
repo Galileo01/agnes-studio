@@ -39,7 +39,7 @@ import { ModelPicker, PriceBadge } from "@/components/model-picker";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { apiFetch } from "@/lib/api";
+import { agnesFetch, apiFetch } from "@/lib/api";
 import { DOCS_URL, getModel, isPaid, REPO_URL, type ModelKind } from "@/lib/models";
 import {
   createChatHistoryAdapter,
@@ -128,9 +128,9 @@ function ChatRuntime({ conversationId, model, children }: { conversationId: stri
     async *run({ messages, abortSignal }) {
       const key = getApiKey();
       if (!key) throw new Error("请先配置 AgnesAI API Key");
-      const response = await fetch("/api/chat", {
+      const response = await agnesFetch("/api/chat", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "X-Agnes-API-Key": key },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ model, messages: toApiMessages(messages), stream: true }),
         signal: abortSignal,
       });
