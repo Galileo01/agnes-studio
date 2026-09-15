@@ -1,34 +1,36 @@
-# Repository Guidelines
+# 仓库协作指南
 
-## Project
+## 项目说明
 
-Agnes Studio is a React + assistant-ui + Tailwind + shadcn/ui playground for AgnesAI text, image, and video models. The frontend is deployed together with a Cloudflare Worker that proxies AgnesAI API requests.
+Agnes Studio 是一个基于 React、assistant-ui、Tailwind CSS、shadcn/ui 和 Cloudflare Workers 的 AgnesAI 多模态体验平台。前端和 Cloudflare Worker 一起部署，Worker 负责代理 AgnesAI API 请求。
 
-## Development
+## 开发约定
 
-- Use `pnpm` for dependency management.
-- Keep text, image, and video mode logic separated for readability and maintenance.
-- Do not store AgnesAI API keys in the Worker or repository. User-provided keys are sent as request headers and may only be remembered in the browser when the user enables that option.
-- Keep generated output, local Workers state, and dependencies out of git: `dist`, `.wrangler`, and `node_modules` must remain ignored.
+- 使用 `pnpm` 管理依赖。
+- 文本、图像、视频三种模式的逻辑需要保持分离，便于阅读和维护。
+- 不要把 AgnesAI API Key 存到 Worker、源码、配置文件或仓库里。用户提供的 Key 只通过请求头发送；只有用户主动选择“在此设备记住 Key”时，才允许保存在浏览器 localStorage。
+- 生成产物、本地 Workers 状态和依赖目录不要进入 git：`dist`、`.wrangler`、`node_modules` 必须保持忽略。
 
-## Verification
+## 验证命令
 
-Run these checks before committing functional changes:
+功能性改动提交前至少运行：
 
 ```bash
 pnpm typecheck
 pnpm build
 ```
 
-Run targeted tests when changing model metadata or logic covered by tests:
+修改模型元数据或已有测试覆盖的逻辑时，运行：
 
 ```bash
 pnpm test
 ```
 
-## Git and deployment
+## Git 与部署
 
-- Develop feature work on branches, then open a PR into `main`.
-- `main` is the production branch.
-- GitHub Actions runs CI on PRs and deploys to Cloudflare after changes land on `main`.
-- Cloudflare credentials must be configured as GitHub Actions Secrets, not committed files.
+- 功能开发使用需求分支，通过 PR 合并到 `main`。
+- `main` 是生产分支。
+- PR 阶段由 GitHub Actions 运行 CI。
+- 合并到 `main` 后，由 GitHub Actions 部署到 Cloudflare。
+- Cloudflare 凭证必须配置为 GitHub Actions Secrets，不能提交到仓库。
+- 未经用户明确要求，不要执行 commit、push、merge、rebase、tag、release 或部署操作。
