@@ -79,7 +79,7 @@ function withHeaders(response: Response, requestId: string) { const headers = ne
 function humanError(status: number, detail: string) {
   if (status === 401 || status === 403) return "API Key 无效、已过期，或没有该模型的访问权限";
   if (status === 404) return "模型、任务或接口不存在，请检查当前配置";
-  if (status === 429) return "请求过于频繁，已达到 AgnesAI 当前账户限额，请稍后再试";
+  if (status === 429) return detail ? `AgnesAI：${detail}` : "AgnesAI 返回请求过于频繁，已超过当前账号的频率限制，请稍后再试";
   if (status >= 500) return "AgnesAI 服务暂时不可用，请稍后重试";
   return detail ? `AgnesAI：${detail}` : `AgnesAI 拒绝了请求（${status}）`;
 }
